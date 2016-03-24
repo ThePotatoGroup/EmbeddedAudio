@@ -16,13 +16,11 @@ typedef struct sample_pool
     int sample_width;
 } sample_pool_t;
 
-int sample_pool_fill_samples(sample_pool_t* pPool, int* pSamples_start, int length);
-int sample_pool_fill_samples(sample_pool_t* pPool, short* pSamples_start, int length);
-int sample_pool_fill_samples(sample_pool_t* pPool, char* pSamples_start, int length);
+int sample_pool_fill_samples(sample_pool_t* pPool, sample_t * pSamples_start, int length);
 
 int sample_pool_get_available_count(sample_pool_t* pPool);
 
-int sample_pool_write_sample(u32* pTargetReg);
+sample_t* sample_pool_get_sample();
 
 
 #endif //EMBEDDEDAUDIO_SAMPLE_POOL_H
