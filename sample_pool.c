@@ -18,7 +18,7 @@ int get_length(sample_pool_t* pPool)
 
 int sample_pool_fill_samples(sample_pool_t* pPool, sample_t * pSamples_start, int length)
 {
-    memcopy(pPool->end, pSamples_start, length);
+    memcpy(pPool->end, pSamples_start, length);
 
     //advancing the end pointer, with looping
     advance_pointer(pPool, &(pPool->end), length);

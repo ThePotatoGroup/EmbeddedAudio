@@ -21,6 +21,14 @@ void testbench_pool_low_callback(sample_pool_t* pPool, int number_needed)
     current_sample += number_needed* sizeof(sample_t*);
 }
 
+void task(void *pvParameters)
+{
+	for( ;;)
+	{
+		vTaskDelay(1);
+	}
+}
+
 int main()
 {
     current_sample = snd_samples;
@@ -35,6 +43,13 @@ int main()
     main_sample_pool.thresh = POOL_THRESH;
 
     setup_FIFO_low_handler(&main_sample_pool, &FIFO);
+
+    // initialize FIFO
+
+    xTaskCreate(task, (signed char*)"HW",configMINIMAL_STACK_SIZE, NULL,tskIDLE_PRIORITY+1,NULL);
+
+    vTaskStartScheduler();
+    return(0);
 }
 
 typedef int myfunnyvar;

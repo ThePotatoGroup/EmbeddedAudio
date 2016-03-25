@@ -10,7 +10,8 @@
 
 typedef int sample_t;
 
-typedef void (*request_samples_function)(sample_pool_t* pPool, int number_samples);
+typedef void (*request_samples_function)(void* pPool, int number_samples);
+
 
 typedef struct sample_pool
 {

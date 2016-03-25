@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 7 resources" deleteContents="false" description="Delete 7 resources" element1="/lab4_freeRTOS_audio/src/adau1761.c" element2="/lab4_freeRTOS_audio/src/audio.h" element3="/lab4_freeRTOS_audio/src/audioPlayer.c" element4="/lab4_freeRTOS_audio/src/codec.h" element5="/lab4_freeRTOS_audio/src/main.c" element6="/lab4_freeRTOS_audio/src/snd_sample.c" element7="/lab4_freeRTOS_audio/src/zedboard_freertos.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="7" stamp="1456587965404"/>
+</session>
