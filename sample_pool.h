@@ -10,6 +10,8 @@
 
 typedef int sample_t;
 
+typedef void (*request_samples_function)(sample_pool_t* pPool, int number_samples);
+
 typedef struct sample_pool
 {
     sample_t* start; // pointer to first sample
@@ -18,6 +20,7 @@ typedef struct sample_pool
     int thresh;
     size_t size;
     int sample_width;
+    request_samples_function request_samples_callback;
 } sample_pool_t;
 
 void sample_pool_allocate(sample_pool_t* pPool);
