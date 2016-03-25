@@ -4,6 +4,13 @@
 
 #include "sample_pool.h"
 
+void sample_pool_allocate(sample_pool_t* pPool)
+{
+    pPool->sample_width = sizeof(sample_t);
+    pPool->start = (sample_t *) malloc(pPool->size * pPool->sample_width);
+    pPool->length = 0;
+}
+
 int sample_pool_fill_samples(sample_pool_t* pPool, sample_t * pSamples_start, int length)
 {
     pPool->length = pPool->length + length;

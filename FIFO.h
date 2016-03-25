@@ -6,6 +6,7 @@
 #define EMBEDDEDAUDIO_FIFO_H
 
 #include "EmbeddedAudioTypes.h"
+#include "zedboard_freertos.h"
 
 // ==========================================================
 // ======================== REGISTERS =======================

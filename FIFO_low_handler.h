@@ -9,8 +9,6 @@
 #include "FIFO.h"
 #include "sample_pool.h"
 
-#define FIFO_BASE_ADDR 0x43C00000
-
 typedef struct {
     FIFO_t* pFIFO;
     sample_pool_t* pSample_pool;

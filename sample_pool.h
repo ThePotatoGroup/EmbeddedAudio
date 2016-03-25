@@ -5,6 +5,9 @@
 #ifndef EMBEDDEDAUDIO_SAMPLE_POOL_H
 #define EMBEDDEDAUDIO_SAMPLE_POOL_H
 
+#include "zedboard_freertos.h"
+#include "EmbeddedAudioTypes.h"
+
 typedef int sample_t;
 
 typedef struct sample_pool
@@ -12,9 +15,11 @@ typedef struct sample_pool
     sample_t* start;
     int length;
     int thresh;
-    int size;
+    size_t size;
     int sample_width;
 } sample_pool_t;
+
+void sample_pool_allocate(sample_pool_t* pPool);
 
 int sample_pool_fill_samples(sample_pool_t* pPool, sample_t * pSamples_start, int length);
 

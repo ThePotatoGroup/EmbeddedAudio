@@ -5,6 +5,7 @@
 #ifndef EMBEDDEDAUDIO_EMBEDDEDAUDIOTYPES_H
 #define EMBEDDEDAUDIO_EMBEDDEDAUDIOTYPES_H
 
-//typedef enum { false, true } bool;
+#define malloc(size) pvPortMalloc(size)
+typedef enum { false, true } bool;
 
 #endif //EMBEDDEDAUDIO_EMBEDDEDAUDIOTYPES_H
