@@ -43,14 +43,22 @@ typedef struct FIFO {
     u32 base_address;
 } FIFO_t;
 
+void FIFO_init(FIFO_t* pFIFO);
+
 int FIFO_tx_write_u32(FIFO_t* pFIFO, u32* data);
 int FIFO_tx_get_vacancies(FIFO_t* pFIFO);
 void FIFO_tx_reset(FIFO_t* pFIFO);
-bool FIFO_tx_get_interrupt_status(FIFO_t* pFIFO, int interruptBitPosition);
-void FIFO_tx_clear_interrupt_status(FIFO_t* pFIFO, int interruptBitPosition);
-void FIFO_tx_enable_interrupt(FIFO_t* pFIFO, int interruptBitPosition);
-void FIFO_tx_disable_interrupt(FIFO_t* pFIFO, int interruptBitPosition);
-void FIFO_tx_enable_all_Interrupts(FIFO_t* pFIFO, int interruptBitPosition);
-void FIFO_tx_disable_all_Interrupts(FIFO_t* pFIFO, int interruptBitPosition);
+
+int FIFO_rx_read_u32(FIFO_t* pFIFO, u32* data); // TODO Implement this if needed
+int FIFO_rx_get_vacancies(FIFO_t* pFIFO);
+void FIFO_rx_reset(FIFO_t* pFIFO);
+
+
+bool FIFO_get_interrupt_status(FIFO_t *pFIFO, int interruptBitPosition);
+void FIFO_clear_interrupt_status(FIFO_t *pFIFO, int interruptBitPosition);
+void FIFO_enable_interrupt(FIFO_t *pFIFO, int interruptBitPosition);
+void FIFO_disable_interrupt(FIFO_t *pFIFO, int interruptBitPosition);
+void FIFO_enable_all_Interrupts(FIFO_t *pFIFO, int interruptBitPosition);
+void FIFO_disable_all_Interrupts(FIFO_t *pFIFO, int interruptBitPosition);
 
 #endif //EMBEDDEDAUDIO_FIFO_H
