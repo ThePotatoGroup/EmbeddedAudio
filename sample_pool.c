@@ -26,7 +26,7 @@ int sample_pool_fill_samples(sample_pool_t* pPool, sample_t * pSamples_start, in
 
 int sample_pool_get_available_count(sample_pool_t* pPool)
 {
-    return pPool->size - get_length(pPool);
+    return (int)(pPool->size - get_length(pPool));
 }
 
 void advance_pointer(sample_pool_t* pPool, sample_t** pointer, int number_increment)
@@ -44,7 +44,7 @@ sample_t* sample_pool_get_sample(sample_pool_t* pPool)
     //check the thresh
     if (get_length(pPool) < pPool->thresh)
     {
-        //TCP request more samples
+        pPool->request_samples_callback(pPool, sample_pool_get_available_count(pPool));
     }
 
     return sample_pointer;
