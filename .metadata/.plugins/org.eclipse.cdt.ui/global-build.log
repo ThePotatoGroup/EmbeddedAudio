@@ -15503,3 +15503,129 @@ arm-xilinx-eabi-size EmbeddedAudio.elf  |tee "EmbeddedAudio.elf.size"
   77112	1148868	  88700	1314680	 140f78	EmbeddedAudio.elf
 'Finished building: EmbeddedAudio.elf.size'
 ' '
+13:01:41 **** Auto Build of configuration Debug for project EmbeddedAudio ****
+make all 
+'Building file: C:/opt/EmbeddedAudio/sample_pool.c'
+'Invoking: ARM gcc compiler'
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/sample_pool.o" -I../../freertos_bsp_3_1_1/ps7_cortexa9_0/include -MMD -MP -MF"src/sample_pool.d" -MT"src/sample_pool.d" -o "src/sample_pool.o" "C:/opt/EmbeddedAudio/sample_pool.c"
+In file included from C:/opt/EmbeddedAudio/zedboard_freertos.h:16:0,
+                 from C:/opt/EmbeddedAudio/sample_pool.h:8,
+                 from C:/opt/EmbeddedAudio/sample_pool.c:5:
+../../freertos_bsp_3_1_1/ps7_cortexa9_0/include/xbasic_types.h:115:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+ #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+  ^
+../../freertos_bsp_3_1_1/ps7_cortexa9_0/include/xbasic_types.h:116:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+ #warning  Please refer the Standalone BSP UG647 for further details
+  ^
+C:/opt/EmbeddedAudio/sample_pool.c: In function 'sample_pool_fill_samples':
+C:/opt/EmbeddedAudio/sample_pool.c:25:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+'Finished building: C:/opt/EmbeddedAudio/sample_pool.c'
+' '
+'Building target: EmbeddedAudio.elf'
+'Invoking: ARM gcc linker'
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../freertos_bsp_3_1_1/ps7_cortexa9_0/lib -o "EmbeddedAudio.elf"  ./src/FIFO.o ./src/FIFO_low_handler.o ./src/adau1761_control.o ./src/audio_testbench.o ./src/sample_pool.o   -Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group
+'Finished building target: EmbeddedAudio.elf'
+' '
+'Invoking: ARM Print Size'
+arm-xilinx-eabi-size EmbeddedAudio.elf  |tee "EmbeddedAudio.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  77176	1148868	  88700	1314744	 140fb8	EmbeddedAudio.elf
+'Finished building: EmbeddedAudio.elf.size'
+' '
+13:02:50 **** Auto Build of configuration Debug for project EmbeddedAudio ****
+make all 
+'Building file: C:/opt/EmbeddedAudio/audio_testbench.c'
+'Invoking: ARM gcc compiler'
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/audio_testbench.o" -I../../freertos_bsp_3_1_1/ps7_cortexa9_0/include -MMD -MP -MF"src/audio_testbench.d" -MT"src/audio_testbench.d" -o "src/audio_testbench.o" "C:/opt/EmbeddedAudio/audio_testbench.c"
+In file included from C:/opt/EmbeddedAudio/zedboard_freertos.h:16:0,
+                 from C:/opt/EmbeddedAudio/FIFO.h:9,
+                 from C:/opt/EmbeddedAudio/audio_testbench.c:9:
+../../freertos_bsp_3_1_1/ps7_cortexa9_0/include/xbasic_types.h:115:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+ #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+  ^
+../../freertos_bsp_3_1_1/ps7_cortexa9_0/include/xbasic_types.h:116:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+ #warning  Please refer the Standalone BSP UG647 for further details
+  ^
+C:/opt/EmbeddedAudio/audio_testbench.c: In function 'main':
+C:/opt/EmbeddedAudio/audio_testbench.c:41:47: warning: assignment from incompatible pointer type
+     main_sample_pool.request_samples_callback = testbench_pool_low_callback;
+                                               ^
+In file included from C:/opt/EmbeddedAudio/zedboard_freertos.h:2:0,
+                 from C:/opt/EmbeddedAudio/FIFO.h:9,
+                 from C:/opt/EmbeddedAudio/audio_testbench.c:9:
+../../freertos_bsp_3_1_1/ps7_cortexa9_0/include/task.h:345:134: warning: pointer targets in passing argument 2 of 'xTaskGenericCreate' differ in signedness [-Wpointer-sign]
+ #define xTaskCreate( pvTaskCode, pcName, usStackDepth, pvParameters, uxPriority, pxCreatedTask ) xTaskGenericCreate( ( pvTaskCode ), ( pcName ), ( usStackDepth ), ( pvParameters ), ( uxPriority ), ( pxCreatedTask ), ( NULL ), ( NULL ) )
+                                                                                                                                      ^
+C:/opt/EmbeddedAudio/audio_testbench.c:50:5: note: in expansion of macro 'xTaskCreate'
+     xTaskCreate(task, (signed char*)"HW",configMINIMAL_STACK_SIZE, NULL,tskIDLE_PRIORITY+1,NULL);
+     ^
+../../freertos_bsp_3_1_1/ps7_cortexa9_0/include/task.h:1986:12: note: expected 'const char * const' but argument is of type 'signed char *'
+ BaseType_t xTaskGenericCreate( TaskFunction_t pxTaskCode, const char * const pcName, const uint16_t usStackDepth, void * const pvParameters, UBaseType_t uxPriority, TaskHandle_t * const pxCreatedTask, StackType_t * const puxStackBuffer, const MemoryRegion_t * const xRegions ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+            ^
+'Finished building: C:/opt/EmbeddedAudio/audio_testbench.c'
+' '
+'Building target: EmbeddedAudio.elf'
+'Invoking: ARM gcc linker'
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../freertos_bsp_3_1_1/ps7_cortexa9_0/lib -o "EmbeddedAudio.elf"  ./src/FIFO.o ./src/FIFO_low_handler.o ./src/adau1761_control.o ./src/audio_testbench.o ./src/sample_pool.o   -Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group
+'Finished building target: EmbeddedAudio.elf'
+' '
+'Invoking: ARM Print Size'
+arm-xilinx-eabi-size EmbeddedAudio.elf  |tee "EmbeddedAudio.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  77176	1148868	  88700	1314744	 140fb8	EmbeddedAudio.elf
+'Finished building: EmbeddedAudio.elf.size'
+' '
+13:03:38 **** Incremental Build of configuration Debug for project EmbeddedAudio ****
+make all 
+make: Nothing to be done for `all'.
+13:04:42 **** Incremental Build of configuration Debug for project EmbeddedAudio ****
+make all 
+make: Nothing to be done for `all'.
+13:05:06 **** Incremental Build of configuration Debug for project EmbeddedAudio ****
+make all 
+make: Nothing to be done for `all'.
+13:05:20 **** Auto Build of configuration Debug for project EmbeddedAudio ****
+make all 
+'Building file: C:/opt/EmbeddedAudio/sample_pool.c'
+'Invoking: ARM gcc compiler'
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/sample_pool.o" -I../../freertos_bsp_3_1_1/ps7_cortexa9_0/include -MMD -MP -MF"src/sample_pool.d" -MT"src/sample_pool.d" -o "src/sample_pool.o" "C:/opt/EmbeddedAudio/sample_pool.c"
+In file included from C:/opt/EmbeddedAudio/zedboard_freertos.h:16:0,
+                 from C:/opt/EmbeddedAudio/sample_pool.h:8,
+                 from C:/opt/EmbeddedAudio/sample_pool.c:5:
+../../freertos_bsp_3_1_1/ps7_cortexa9_0/include/xbasic_types.h:115:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+ #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+  ^
+../../freertos_bsp_3_1_1/ps7_cortexa9_0/include/xbasic_types.h:116:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+ #warning  Please refer the Standalone BSP UG647 for further details
+  ^
+C:/opt/EmbeddedAudio/sample_pool.c: In function 'sample_pool_fill_samples':
+C:/opt/EmbeddedAudio/sample_pool.c:25:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+'Finished building: C:/opt/EmbeddedAudio/sample_pool.c'
+' '
+'Building target: EmbeddedAudio.elf'
+'Invoking: ARM gcc linker'
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../freertos_bsp_3_1_1/ps7_cortexa9_0/lib -o "EmbeddedAudio.elf"  ./src/FIFO.o ./src/FIFO_low_handler.o ./src/adau1761_control.o ./src/audio_testbench.o ./src/sample_pool.o   -Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group
+'Finished building target: EmbeddedAudio.elf'
+' '
+'Invoking: ARM Print Size'
+arm-xilinx-eabi-size EmbeddedAudio.elf  |tee "EmbeddedAudio.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  77112	1148868	  88700	1314680	 140f78	EmbeddedAudio.elf
+'Finished building: EmbeddedAudio.elf.size'
+' '
+13:05:49 **** Incremental Build of configuration Debug for project EmbeddedAudio ****
+make all 
+make: Nothing to be done for `all'.
+13:06:24 **** Incremental Build of configuration Debug for project EmbeddedAudio ****
+make all 
+make: Nothing to be done for `all'.
+13:06:48 **** Incremental Build of configuration Debug for project EmbeddedAudio ****
+make all 
+make: Nothing to be done for `all'.
+13:06:57 **** Incremental Build of configuration Debug for project EmbeddedAudio ****
+make all 
+make: Nothing to be done for `all'.

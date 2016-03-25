@@ -44,7 +44,8 @@ int main()
 
     setup_FIFO_low_handler(&main_sample_pool, &FIFO);
 
-    // initialize FIFO
+    // Request initial set of data
+    main_sample_pool.request_samples_callback(&main_sample_pool, main_sample_pool.size);
 
     xTaskCreate(task, (signed char*)"HW",configMINIMAL_STACK_SIZE, NULL,tskIDLE_PRIORITY+1,NULL);
 
