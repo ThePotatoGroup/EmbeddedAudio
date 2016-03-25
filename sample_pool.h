@@ -20,7 +20,7 @@ int sample_pool_fill_samples(sample_pool_t* pPool, sample_t * pSamples_start, in
 
 int sample_pool_get_available_count(sample_pool_t* pPool);
 
-sample_t* sample_pool_get_sample();
+sample_t* sample_pool_get_sample(sample_pool_t* pPool);
 
 
 #endif //EMBEDDEDAUDIO_SAMPLE_POOL_H
