@@ -13,6 +13,8 @@ typedef int sample_t;
 typedef struct sample_pool
 {
     sample_t* start;
+    sample_t* end;
+    sample_t* top;
     int length;
     int thresh;
     size_t size;
