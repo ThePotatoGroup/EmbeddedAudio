@@ -12,10 +12,9 @@ typedef int sample_t;
 
 typedef struct sample_pool
 {
-    sample_t* start;
-    sample_t* end;
-    sample_t* top;
-    int length;
+    sample_t* start; // pointer to first sample
+    sample_t* end; // pointer to last sample
+    sample_t* top; // pointer to beginning of sample pool
     int thresh;
     size_t size;
     int sample_width;
@@ -23,11 +22,14 @@ typedef struct sample_pool
 
 void sample_pool_allocate(sample_pool_t* pPool);
 
+int get_length(sample_pool_t* pPool);
+
 int sample_pool_fill_samples(sample_pool_t* pPool, sample_t * pSamples_start, int length);
 
 int sample_pool_get_available_count(sample_pool_t* pPool);
 
-sample_t* sample_pool_get_sample(sample_pool_t* pPool);
+void advance_pointer(sample_pool_t* pPool, sample_t** pointer, int number_increment);
 
+sample_t* sample_pool_get_sample(sample_pool_t* pPool);
 
 #endif //EMBEDDEDAUDIO_SAMPLE_POOL_H

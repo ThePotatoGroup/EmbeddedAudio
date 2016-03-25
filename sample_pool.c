@@ -8,48 +8,45 @@ void sample_pool_allocate(sample_pool_t* pPool)
 {
     pPool->sample_width = sizeof(sample_t);
     pPool->start = (sample_t *) malloc(pPool->size * pPool->sample_width);
-    pPool->length = 0;
+    pPool->end = pPool->start;
+}
+
+int get_length(sample_pool_t* pPool)
+{
+    return (pPool->end - pPool->start)/pPool->sample_width;
 }
 
 int sample_pool_fill_samples(sample_pool_t* pPool, sample_t * pSamples_start, int length)
 {
-    pPool->length = pPool->length + length;
     memcopy(pPool->end, pSamples_start, length);
 
     //advancing the end pointer, with looping
-    if (((pPool->end - pPool->top)/pPool->sample_width + length) > size)
-    {
-        pPool->end = pPool->top + (length - (size - (pPool->end - pPool->top)/pPool->sample_width))*pPool->sample_width; // loop to top of pool
-    }else
-    {
-        pPool->end = pPool->end + (pPool->sample_width * length);
-    }
+    advance_pointer(pPool, &(pPool->end), length);
 }
 
 int sample_pool_get_available_count(sample_pool_t* pPool)
 {
-    return pPool->size - pPool->length;
+    return pPool->size - get_length(pPool);
+}
+
+void advance_pointer(sample_pool_t* pPool, sample_t** pointer, int number_increment)
+{
+    *pointer = (*pointer - pPool->top + (number_increment * pPool->sample_width))%(pPool->size * pPool->sample_width) + pPool->top;
 }
 
 sample_t* sample_pool_get_sample(sample_pool_t* pPool)
 {
-    //shortening the length
-    pPool->length = pPool->length - 1;
+    sample_t* sample_pointer = pPool->start; // desired sample at current start position
+
+    //advancing the start pointer, with looping
+    advance_pointer(pPool, &(pPool->start), 1);
 
     //check the thresh
-    if (pPool->length < pPool->thresh)
+    if (get_length(pPool) < pPool->thresh)
     {
         //TCP request more samples
     }
 
-    //advancing the start pointer, with looping
-    if ((pPool->start + pPool->sample_width - pPool->top)/pPool->sample_width > size)
-    {
-        pPool->start = pPool->top; // loop to top of pool
-    }else
-    {
-        pPool->start = pPool->start + pPool->sample_width;
-    }
-
-    return pPool->start;
+    return sample_pointer;
 }
+
